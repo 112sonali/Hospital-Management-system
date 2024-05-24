@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>doctor detail</title>
+<title>Patient View</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link href="{% static 'style.css' %}" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="{% static 'js/cufon-yui.js' %}"></script>
@@ -35,70 +35,53 @@
       <div class="mainbar">
         
         <div class="article">
-          <h2><span><b>Doctor sign-up</b></h2>
           <div class="clr"></div>
-          <form action="/doctor_signup/" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <ol>
-              <li>
-                <label for="name" >Name</label>
-                <input type="text" name="name" class="text" placeholder="enter your name"/>
-              </li>
-              <li>
-                <label for="email">Email</label>
-                <input type="email" name="email" class="text" placeholder="enter your Email"/>
-              </li>
-              <li>
-                <label for="gender">Gender</label>
-                <input type="text" name="gender" class="text" placeholder="enter your gender"/>
-              </li>
-              <li>
-                <label for="dob">DOB</label>
-                <input type="date" name="dob" class="text" placeholder="enter your dob"/>
-              </li>
-              <li>
-                <label for="experience">Experience</label>
-                <input type="text" name="experience" class="text" placeholder="enter your experience"/>
-              </li>
-              <li>
-                <label for="specialization">Specialization</label>
-                <input type="text" name="specialization" class="text" placeholder="enter your epecialization"/>
-              </li>
-              <li>
-                <label for="address">Address</label>
-                <textarea type="text" name="address" placeholder="enter your address"></textarea>
-              </li>
-              <li>
-                <label for="mobileno">Mobile-No</label>
-                <input type="number" name="mobileno" class="text" placeholder="enter your Mobile-no" />
-              </li>
-              <li>
-                <label for="message">Password</label>
-                <input type="password" name="password" class="text" placeholder="enter your password" />
-              </li>
-              <li>
-                <label for="degree">Degree</label>
-                <input type="text" name="degree" class="text" placeholder="enter your degree" />
-              </li>
-              <li>
-                <label for="file">Upload Image</label>
-                <input type="file" name="image" class="text"  />
-              </li>
-              <li>
-                <button type="submit" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" >SignUp</button>
-                <div class="clr"></div>
-              </li>
-            </ol>
-          </form>
-          {% if messages %}
-              {% for message in messages%}
-              <div class='alert alert-{{messages.tags}} alert-dismissible fade show' role='alert'>
-                <strong>Message: </strong> {{message}}
-                <button type='button' class='btn-close' date-bs-dismiss='alert' aria-label='Close'></button>
-              </div>
-              {% endfor %}
-          {% endif %}
-        </div>
+
+
+        <section class="contact_section layout_padding-bottom">
+          <div class="container">
+            <div class="heading_container">
+               <br>
+                <h2>
+                  Patient Detail Data
+                </h2>
+            </div>
+
+          <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="table-dark" scope="col">Name</th>
+                  <th class="table-dark" scope="col">Email</th>
+                  <th class="table-dark" scope="col">Mobile No.</th>
+                  <th class="table-dark" scope="col">Doctor</th>
+                  <th class="table-dark" scope="col">Gender</th>
+                  <th class="table-dark" scope="col">Address</th>
+                  <th class="table-dark" scope="col">DOB</th>
+                  <th class="table-dark" scope="col">Report</th>
+                  <th class="table-dark" scope="col">Image</th>
+              </tr>
+              </thead>
+              <tbody>
+                {% for p in patient_obj %}
+                 <tr>
+                    <td class="table-primary">{{p.name}}</td>
+                    <td class="table-primary">{{p.email}}</td>
+                    <td class="table-primary">{{p.mobileno}}</td>
+                    <td class="table-primary">{{p.doctor}}</td>
+                    <td class="table-primary">{{p.gender}}</td>
+                    <td class="table-primary">{{p.address}}</td>
+                    <td class="table-primary">{{p.dob}}</td>
+                    <td class="table-primary">{{p.report}}</td>
+                    <td class="table-primary"><img src="{{p.image.url}}"></td>
+                  </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+    </div>
       </div>
       <div class="sidebar">
         <div class="searchform">

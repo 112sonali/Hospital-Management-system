@@ -37,7 +37,7 @@
         <div class="article">
           <h2><span><b>Admin sign-up</b></h2>
           <div class="clr"></div>
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="/adminsignup/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <ol>
               <li>
@@ -50,18 +50,26 @@
               </li>
               <li>
                 <label for="mobileno">Mobile-No</label>
-                <input type="number" name="website" class="text" placeholder="enter your Mobile-no" />
+                <input type="number" name="mobileno" class="text" placeholder="enter your Mobile-no" />
               </li>
               <li>
                 <label for="message">Password</label>
-                <textarea type="password" name="message" cols="50" placeholder="enter your password"></textarea>
+                <input type="password" name="password" cols="50" placeholder="enter your password"/>
               </li>
               <li>
-                <input type="image" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" />
+                <button type="submit" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" />sign-up</button>
                 <div class="clr"></div>
               </li>
             </ol>
           </form>
+          {% if messages %}
+              {% for message in messages%}
+              <div class='alert alert-{{messages.tags}} alert-dismissible fade show' role='alert'>
+                <strong>Message: </strong> {{message}}
+                <button type='button' class='btn-close' date-bs-dismiss='alert' aria-label='Close'></button>
+              </div>
+              {% endfor %}
+          {% endif %}
         </div>
       </div>
       <div class="sidebar">

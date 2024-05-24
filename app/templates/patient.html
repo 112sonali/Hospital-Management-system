@@ -37,7 +37,7 @@
         <div class="article">
           <h2><span><b>patient sign-up</b></h2>
           <div class="clr"></div>
-          <form action="#" method="POST" enctype="multipart/form-data">
+          <form action="/patient_data/" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <ol>
               <li>
@@ -53,8 +53,12 @@
                 <input type="number" name="mobileno" class="text" placeholder="enter your Mobile-no" />
               </li>
               <li>
-                <label for="doctor">Doctor</label>
-                <input type="number" name="doctor" class="text" placeholder="enter doctor detail" />
+                <label for="doctor">Doctor's Name</label>
+                <select name="doctor" class="text" >
+                  {% for d in doctor_obj %}
+                  <option value={{d.id}}>{{d.name}}{{d.experience}}{{d.specialization}}</option>
+                  {% endfor %}
+                </select>
               </li>
               <li>
                 <label for="gender">Gender</label>
@@ -62,26 +66,34 @@
               </li>
               <li>
                 <label for="address">Address</label>
-                <textarea type="text" name="paddress" placeholder="enter your address"></textarea>
+                <textarea type="text" name="address" placeholder="enter your address"></textarea>
               </li>
               <li>
                 <label for="dob">DOB</label>
-                <input type="text" name="dob" class="text" placeholder="enter your dob"/>
+                <input type="date" name="dob" class="text" placeholder="enter your dob"/>
               </li>
               <li>
-                <label for="report">Report</label>
-                <input type="text" name="report" class="text" placeholder="enter your report"/>
+                <label for="report">Appointment Date</label>
+                <input type="date" name="report" class="text" placeholder="enter your report"/>
               </li>
               <li>
                 <label for="file">Upload Image</label>
                 <input type="file" name="image" class="text"  />
               </li>
               <li>
-                <input type="image" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" />
+                <button type="image" name="imageField" id="imageField" src="{% static 'images/submit.gif' %}" class="send" >submit</button>
                 <div class="clr"></div>
               </li>
             </ol>
           </form>
+          {% if messages %}
+              {% for message in messages%}
+              <div class='alert alert-{{messages.tags}} alert-dismissible fade show' role='alert'>
+                <strong>Message: </strong> {{message}}
+                <button type='button' class='btn-close' date-bs-dismiss='alert' aria-label='Close'></button>
+              </div>
+              {% endfor %}
+          {% endif %}
         </div>
       </div>
       <div class="sidebar">
