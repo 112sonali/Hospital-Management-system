@@ -16,7 +16,8 @@ urlpatterns = [
     path("patient_data/",patient_data),
     path("patientview/",patientview),
     path("doctorlogin/",doctorlogin),
-    path("doctor_login/",doctor_login)
+    path("doctor_login/",doctor_login),
+    path("doctorview/",doctorview)
     
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

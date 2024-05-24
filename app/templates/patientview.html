@@ -65,15 +65,15 @@
               <tbody>
                 {% for p in patient_obj %}
                  <tr>
-                    <td class="table-primary">{{p.name}}</td>
-                    <td class="table-primary">{{p.email}}</td>
-                    <td class="table-primary">{{p.mobileno}}</td>
-                    <td class="table-primary">{{p.doctor}}</td>
-                    <td class="table-primary">{{p.gender}}</td>
-                    <td class="table-primary">{{p.address}}</td>
-                    <td class="table-primary">{{p.dob}}</td>
-                    <td class="table-primary">{{p.report}}</td>
-                    <td class="table-primary"><img src="{{p.image.url}}"></td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.email}}</td>
+                    <td>{{p.mobileno}}</td>
+                    <td>{{p.doctor}}</td>
+                    <td>{{p.gender}}</td>
+                    <td>{{p.address}}</td>
+                    <td>{{p.dob}}</td>
+                    <td>{{p.report}}</td>
+                    <td><img src="{{patient_obj.image.url}}"></td>
                   </tr>
                 {% endfor %}
             </tbody>
@@ -81,6 +81,7 @@
       </div>
     </div>
     </section>
+    <a class="btn bg-gradient-primary mt-4 w-100" href="/" type="button">Logout</a>
     </div>
       </div>
       <div class="sidebar">

@@ -34,7 +34,7 @@ def admin_login(request):
         if check_password(request.POST['password'],login.password):
             request.session['login'] = True
             request.session['email'] = login.email
-            return redirect('/patient/')
+            return redirect('/doctorview/')
         else:
             messages.error(request,"Invalid Id Password")
             return redirect("/doctor/")
@@ -64,16 +64,16 @@ def doctor_signup(request):
                                    address=address,mobileno=mobileno,password=password,degree=degree,image=image)
             return redirect("/doctorlogin/")
         
-def doctor_login(request):
-    if request.method == "POST":
-        login = Doctor.objects.get(email = request.POST['email'])
-        if check_password(request.POST['password'],login.password):
-            request.session['login'] = True
-            request.session['email'] = login.email
-            return redirect('/patient/')
-        else:
-            messages.error(request,"Invalid Id Password")
-            return redirect("/index/")
+#def doctor_login(request):
+    #if request.method == "POST":
+        #login = Doctor.objects.get(email = request.POST['email'])
+        #if check_password(request.POST['password'],login.password):
+            #request.session['login'] = True
+            #request.session['email'] = login.email
+           # return redirect('/patient/')
+        #else:
+            #messages.error(request,"Invalid Id Password")
+            #return redirect("/index/")
 
 def patient(request):
     doctor_obj = Doctor.objects.all()
@@ -101,7 +101,7 @@ def patient_data(request):
                                        gender=gender, address=address,dob=dob,report=report, 
                                        image=image, doctor=new)
             messages.success(request, "Appointment Booked Sucessfully")
-            return redirect("/patient/")
+            return redirect("/")
         
 def patientview(request):
     patient_obj = Patient.objects.all()
@@ -116,10 +116,16 @@ def doctor_login(request):
         if check_password(request.POST['password'],login.password):
             request.session['login'] = True
             request.session['email'] = login.email
-            return redirect('/patient/')
+            return redirect('/patientview/')
         else:
             messages.error(request,"Invalid Id Password")
             return redirect("/")
+        
+
+def doctorview(request):
+    doctor_obj = Doctor.objects.all()
+    patient_obj = Patient.objects.all()
+    return render(request,"doctorview.html" ,{"doctor_obj":doctor_obj,"patient_obj":patient_obj})
 
 
 

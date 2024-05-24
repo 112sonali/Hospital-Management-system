@@ -1,0 +1,87 @@
+<section class="contact_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container">
+        <br>
+        <h2>
+          Doctor's List
+        </h2>
+      </div>
+      
+      <table class="table caption-top">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Gender</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Address</th>
+            <th scope="col">Degree</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Specialization</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          {% for j in doctor_obj %}
+            <td>{{j.name}}</td>
+            <td>{{j.email}}</td>
+            <td>{{j.mobile_no}}</td>
+            <td>{{j.gender}}</td>
+            <td>{{j.dob}}</td>
+            <td>{{j.address}}</td>
+            <td>{{j.degree}}</td>
+            <td>{{j.experience}}</td>
+            <td>{{j.Specialization}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+
+
+  <section class="contact_section layout_padding-bottom">
+    <div class="container">
+      <div class="heading_container">
+        <br>
+        <h2>
+          Patient's List
+        </h2>
+      </div>
+      
+      <table class="table caption-top">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile No</th>
+            <th scope="col">Gender</th>
+            <th scope="col">DOB</th>
+            <th scope="col">Address</th>
+            <th scope="col">Report</th>
+            <th scope="col">Appointment Date</th>
+            <th scope="col">Dr.Name</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          {% for i in patient_obj %}
+            <td>{{i.name}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.mobile_no}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.dob}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.report}}</td>
+            <td>{{i.ap_date}}</td>
+            <td>{{i.dr_name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>

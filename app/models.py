@@ -25,6 +25,9 @@ class Doctor(models.Model):
     degree = models.CharField(max_length=200)
     image = models.FileField(upload_to='Doctore',max_length=100)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Patient(models.Model):
     name = models.CharField(max_length=200)
@@ -36,6 +39,9 @@ class Patient(models.Model):
     dob = models.DateField()
     report = models.DateField()
     image = models.FileField(upload_to='Patient', max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return str(self.name)
 
 
     
