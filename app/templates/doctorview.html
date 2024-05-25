@@ -74,7 +74,12 @@
                     <td>{{d.address}}</td>
                     <td>{{d.mobileno}}</td>
                     <td>{{d.degree}}</td>
-                    <td><img src="{{doctor_obj.image.url}}"/></td>
+                    <td><img src="{{d.image.url}}" style="height:20px; widhth:20px;"/></td>
+                    <td>
+                      &nbsp;
+                      <a href="{% url 'deletedoctor' d.id %}" type="button" class="btn btn-outline-dark">Delete</a>
+                      &nbsp;
+                    </td>
                   </tr>
                   {% endfor %}
                 </tbody>
@@ -119,7 +124,12 @@
                     <td>{{pa.address}}</td>
                     <td>{{pa.dob}}</td>
                     <td>{{pa.report}}</td>
-                    <td><img src="{{patient_obj.image.url}}"></td>
+                    <td><img src="{{pa.image.url}}" style="height:20px; width:20px;" ></td>
+                    <td>
+                      &nbsp;
+                      <a href="{% url 'delete' pa.id %}" type="button" class="btn btn-outline-dark">Delete</a>
+                      &nbsp;
+                    </td>
                   </tr>
                   {% endfor %}
                 </tbody>

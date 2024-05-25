@@ -20,10 +20,10 @@ class Doctor(models.Model):
     experience = models.CharField(max_length=200)
     specialization = models.CharField(max_length=200)
     address = models.TextField()
-    mobileno = models.IntegerField()
+    mobileno = models.BigIntegerField()
     password = models.CharField(max_length=200)
     degree = models.CharField(max_length=200)
-    image = models.FileField(upload_to='Doctore',max_length=100)
+    image = models.ImageField(upload_to='Doctore',max_length=100, blank=True, null=True)
 
     def __str__(self):
         return str(self.name)
@@ -32,7 +32,7 @@ class Doctor(models.Model):
 class Patient(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
-    mobileno = models.IntegerField()
+    mobileno = models.BigIntegerField()
     doctor = models.ForeignKey(Doctor,on_delete=models.CASCADE)
     gender = models.CharField(max_length=200)
     address = models.TextField()

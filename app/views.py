@@ -107,6 +107,10 @@ def patientview(request):
     patient_obj = Patient.objects.all()
     return render(request,"patientview.html",{"patient_obj":patient_obj})
 
+def delete_patient(request,pk):
+    Patient.objects.get(id=pk).delete()
+    return redirect('/doctorview/')
+
 def doctorlogin(request):
     return render(request,"doctorlogin.html")
 
@@ -126,6 +130,10 @@ def doctorview(request):
     doctor_obj = Doctor.objects.all()
     patient_obj = Patient.objects.all()
     return render(request,"doctorview.html" ,{"doctor_obj":doctor_obj,"patient_obj":patient_obj})
+
+def delete_doctor(request,pk):
+    Doctor.objects.get(id=pk).delete()
+    return redirect('/doctorview/')
 
 
 
