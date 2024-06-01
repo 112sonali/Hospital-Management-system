@@ -19,6 +19,8 @@ urlpatterns = [
     path("doctor_login/",doctor_login),
     path("doctorview/",doctorview),
     path("deletedoctor/<int:pk>/",delete_doctor,name='deletedoctor'),
+    path("update_doctor/",update_doctor),
+    path("updatedoctor/<int:uid>/",updatedoctor, name="updatedoctor"),
     
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 

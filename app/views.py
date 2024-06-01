@@ -135,5 +135,31 @@ def delete_doctor(request,pk):
     Doctor.objects.get(id=pk).delete()
     return redirect('/doctorview/')
 
+def updatedoctor(request,uid):
+    update_doctor=Doctor.objects.get(id=uid)
+    return render(request, "updatedoctor.html", {"update_doctor":update_doctor})
+
+def update_doctor(request):
+    if request.method == "POST":
+        uid = request.POST.get('uid')
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        gender = request.POST.get('gender')
+        dob = request.POST.get('dob')
+        experience = request.POST.get('experience')
+        specialization = request.POST.get('specialization')
+        address = request.POST.get('address')
+        mobileno = request.POST.get('mobileno')
+        password = make_password(request.POST.get('password'))
+        degree = request.POST.get('degree')
+        image = request.FILES.get('image')
+        Doctor.objects.filter(id=uid).update(name=name, email=email,gender=gender,dob=dob,
+                                   experience=experience,specialization=specialization,
+                                   address=address,mobileno=mobileno,password=password,degree=degree,image=image)
+        messages.success(request,"doctor update successfully")
+        return redirect("/doctorview/")
+        
+
+
 
 

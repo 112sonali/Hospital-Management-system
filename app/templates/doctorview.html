@@ -79,6 +79,8 @@
                       &nbsp;
                       <a href="{% url 'deletedoctor' d.id %}" type="button" class="btn btn-outline-dark">Delete</a>
                       &nbsp;
+                      <a href="{% url 'updatedoctor' d.id %}" class="danger" type="submit">update</a>
+                        &nbsp;
                     </td>
                   </tr>
                   {% endfor %}
